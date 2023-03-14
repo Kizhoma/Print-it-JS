@@ -16,13 +16,12 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-
-// const banner =
+// Les variables qui ciblent les différents éléments du DOM
+const banner = document.getElementById('#banner');
 const arrowLeft = document.getElementsByClassName('arrow_left')[0];
 const arrowRight = document.getElementsByClassName('arrow_right')[0];
-// const bannerImage =
-// const bannerText=
-
+const bannerImage = document.querySelector('#banner > img');
+const bannerText= document.querySelector('#banner > p');
 
 // On crée une variable avec le nombre d'éléments du tableau slides
 const lastSlidesListIndex = slides.length - 1;
@@ -32,18 +31,28 @@ console.log(arrowLeft,arrowRight)
 // Fonction pour créer les bullets
 const createBullet = () => {
 	const dots = document.querySelector('.dots');
+	// on boucle sur le tableau slides pour créer le nombre exact de bullets
 	for (let j = 0; j < lastSlidesListIndex + 1; j++) {
+		// on crée un élément span
 		const dot = document.createElement('span');
+		// on applique le style css "dot"
 		dot.classList.add('dot');
+		// on ajoute les éléments "dot" dans le parent dots
 		dots.appendChild(dot);
+		// condition pour ajouter la class dot_selected
 		if (j == 0) { 
 			dots.children[j].classList.add('dot_selected');
 		}
+		// Ajouter un événement click pour chaque bullet
+		dot.addEventListener('click', () => {
+			currentSlideIndex = j;
+			changeSlide();
+		});
 	}
 }
 
 
-// on appelle la fonction
+// On nomme la fonction bullet
 createBullet();
 
 // Lier le bullet à une image 
@@ -54,6 +63,10 @@ const bulletSelected = () => {
 }
 
 // Changer le contenu img et text de la bannière
+const changeSlide = () => {
+	bannerImage.src = `./assets/images/slideshow/${slides[currentSlideIndex].image}`;
+	bannerText.innerHTML = slides[currentSlideIndex].tagLine;
+}
 
 
 // Event au clic
@@ -64,7 +77,7 @@ arrowLeft.addEventListener('click', function() {
 		currentSlideIndex--;
 	}
 	console.log("arrowLeft");
-// 	changeSlide();
+	changeSlide();
 });
 
 arrowRight.addEventListener('click', function() {
@@ -74,5 +87,5 @@ arrowRight.addEventListener('click', function() {
 		currentSlideIndex++;
 	}
 	console.log("arrowRight");
-	// changeSlide();
+	changeSlide();
 });
