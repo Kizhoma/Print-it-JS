@@ -17,7 +17,7 @@ const slides = [
 	}
 ]
 // Les variables qui ciblent les différents éléments du DOM
-const banner = document.getElementById('#banner');
+const banner = document.getElementById('banner');
 const arrowLeft = document.getElementsByClassName('arrow_left')[0];
 const arrowRight = document.getElementsByClassName('arrow_right')[0];
 const bannerImage = document.querySelector('#banner > img');
@@ -76,7 +76,6 @@ arrowLeft.addEventListener('click', function() {
 	} else {
 		currentSlideIndex--;
 	}
-	console.log("arrowLeft");
 	changeSlide();
 });
 
@@ -86,6 +85,5 @@ arrowRight.addEventListener('click', function() {
 	} else {
 		currentSlideIndex++;
 	}
-	console.log("arrowRight");
 	changeSlide();
 });
