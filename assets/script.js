@@ -26,7 +26,6 @@ const bannerText= document.querySelector('#banner > p');
 // On crée une variable avec le nombre d'éléments du tableau slides
 const lastSlidesListIndex = slides.length - 1;
 let currentSlideIndex = 0;
-console.log(arrowLeft,arrowRight)
 
 // Fonction pour créer les bullets
 const createBullet = () => {
